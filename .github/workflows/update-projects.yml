@@ -1,0 +1,111 @@
+name: Update Latest Projects
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update README with newest repositories
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: Ushosree177
+        run: |
+          python3 <<'PYTHON'
+          import os
+          import json
+          import urllib.request
+          from pathlib import Path
+
+          username = os.environ["USERNAME"]
+          token = os.environ["GH_TOKEN"]
+
+          url = (
+              f"https://api.github.com/users/{username}/repos"
+              "?per_page=100&sort=created&direction=desc"
+          )
+
+          request = urllib.request.Request(
+              url,
+              headers={
+                  "Authorization": f"Bearer {token}",
+                  "Accept": "application/vnd.github+json",
+                  "User-Agent": "GitHub-Actions"
+              }
+          )
+
+          with urllib.request.urlopen(request) as response:
+              repos = json.load(response)
+
+          repos = [
+              repo for repo in repos
+              if repo["name"].lower() != username.lower()
+              and not repo["fork"]
+          ]
+
+          repos = repos[:10]
+          projects = []
+
+          for repo in repos:
+              name = repo["name"]
+              repo_url = repo["html_url"]
+              description = repo.get("description") or "Research and development project."
+              language = repo.get("language")
+
+              project = f"### [{name}]({repo_url})\n\n{description}"
+
+              if language:
+                  project += f"\n\n**Language:** {language}"
+
+              projects.append(project)
+
+          project_text = "\n\n---\n\n".join(projects)
+
+          readme_path = Path("README.md")
+          readme = readme_path.read_text(encoding="utf-8")
+
+          start = "<!-- PROJECTS:START -->"
+          end = "<!-- PROJECTS:END -->"
+
+          if start not in readme or end not in readme:
+              raise ValueError("Project markers not found in README.md")
+
+          before = readme.split(start)[0]
+          after = readme.split(end)[1]
+
+          updated_readme = (
+              before
+              + start
+              + "\n\n"
+              + project_text
+              + "\n\n"
+              + end
+              + after
+          )
+
+          readme_path.write_text(updated_readme, encoding="utf-8")
+          PYTHON
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Automatically update latest projects"
+            git push
+          fi
