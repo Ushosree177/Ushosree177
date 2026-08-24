@@ -25,8 +25,8 @@ I am particularly interested in developing statistically principled methods and 
 <!-- PROJECTS:END -->
 
 ---
-
 ## 🌐 Connect With Me
 
+- 💼 [LinkedIn](https://www.linkedin.com/in/ushosree-raha-53b75b227/)
 - 💻 [GitHub](https://github.com/Ushosree177)
 - 🌐 [Portfolio](https://ushosree177.github.io/)
