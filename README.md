@@ -23,6 +23,14 @@ I am particularly interested in developing statistically principled methods and 
 
 <!-- PROJECTS:START -->
 
+### [pslv-reliability](https://github.com/Ushosree177/pslv-reliability)
+
+Research and development project.
+
+**Language:** Jupyter Notebook
+
+---
+
 ### [Ushosree177.github.io](https://github.com/Ushosree177/Ushosree177.github.io)
 
 Research and development project.
@@ -92,14 +100,6 @@ Research and development project.
 Research and development project.
 
 **Language:** Jupyter Notebook
-
----
-
-### [Crowd_Density_map](https://github.com/Ushosree177/Crowd_Density_map)
-
-Research and development project.
-
-**Language:** Python
 
 <!-- PROJECTS:END -->
 
