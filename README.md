@@ -23,6 +23,12 @@ I am particularly interested in developing statistically principled methods and 
 
 <!-- PROJECTS:START -->
 
+### [Regime-Uncertainty-Weighted-Bayesian-LASSO-for-Financial-Return-Prediction](https://github.com/Ushosree177/Regime-Uncertainty-Weighted-Bayesian-LASSO-for-Financial-Return-Prediction)
+
+Research and development project.
+
+---
+
 ### [pslv-reliability](https://github.com/Ushosree177/pslv-reliability)
 
 Research and development project.
@@ -40,14 +46,6 @@ Research and development project.
 ---
 
 ### [Fingerprint_Classification](https://github.com/Ushosree177/Fingerprint_Classification)
-
-Research and development project.
-
-**Language:** Python
-
----
-
-### [Regime-Uncertainty-Weighted-Bayesian-LASSO-for-Financial-Return-Prediction](https://github.com/Ushosree177/Regime-Uncertainty-Weighted-Bayesian-LASSO-for-Financial-Return-Prediction)
 
 Research and development project.
 
