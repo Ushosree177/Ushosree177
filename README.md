@@ -89,8 +89,6 @@ Research and development project.
 
 Research and development project.
 
-**Language:** Jupyter Notebook
-
 ---
 
 ### [ambulance-route-optimization-a--and-ao-star](https://github.com/Ushosree177/ambulance-route-optimization-a--and-ao-star)
